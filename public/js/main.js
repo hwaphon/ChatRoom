@@ -31,6 +31,7 @@ $(function() {
 
 			var message = $('#message').val();
 			$('#message').val('');
+			$('#message').focus();
 
 			socket.emit('send-message', {name: name, message: message});
 		});
@@ -53,7 +54,11 @@ $(function() {
 	}
 
 	function sendMessage(msg) {
-		$('.content-area').append($('<div></div>').addClass('info').html('<p class="author">' + msg.name +
-				'</p><div class="message">' + msg.message + '</div>'));
+		var element = document.createElement('div');
+		element.classList.add('info');
+		element.innerHTML = '<p class="author">' + msg.name +
+				'</p><div class="message">' + msg.message + '</div>';
+		$('.content-area').append(element);
+		element.scrollIntoView(false);
 	}
 });

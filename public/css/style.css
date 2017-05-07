@@ -124,6 +124,7 @@ body {
 }
 
 .content-area {
+	width: 100%;
 	flex: 1 1 auto;
 	overflow: auto;
 	padding-top: 24px;
@@ -133,6 +134,7 @@ body {
 }
 
 .info {
+	width: 80%;
 	margin: 8px 36px;
 }
 
@@ -142,12 +144,14 @@ body {
 	color: #888;
 }
 .message {
+	max-width: 100%;
 	display: inline-block;
 	padding: 8px 12px;
 	background-color: #C0D9E5;
 	color: #fff;
 	border-radius: 8px;
 	position: relative;
+	word-break: break-all;
 }
 
 .message::before {
