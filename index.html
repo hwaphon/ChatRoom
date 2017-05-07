@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>T_T</title>
+        <link rel="stylesheet" href="css/style.css">
+    </head>
+    <body>
+        <div class="model">
+            <form action="" id="adduserform">
+                <p>你输入的这个昵称将是其它用户识别你的唯一凭证</p>
+                <input type="text" id="name" placeholder="请输入你的昵称">
+                <button type="submit" id="addsuer">确定</button>
+            </form>
+        </div>
+        <section class="container">
+            <section class="user-list">
+            </section>
+            <section class="chat-content">
+                <div class="content-area">
+                </div>
+                <form action="" class="input-area">
+                    <input type="text" placeholder="输入聊天信息" id="message">
+                    <button id="sendmessage">发送</button>
+                </form>
+            </section>
+        </section>
+        
+        <script src="https://cdn.bootcss.com/socket.io/1.7.3/socket.io.min.js"></script>
+        <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+        <script src="js/main.js"></script>
+    </body>
+</html>
