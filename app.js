@@ -13,19 +13,31 @@ app.get('/', function( req, res ) {
 });
 
 io.on('connection', function(socket) {
+
+	var thisName;
+
 	socket.on('adduser', function(name) {
+		thisName = name;
 		users.push({
 			name: name,
 			flag: 'item' + users.length
 		});
-
 		io.emit('adduser-todom', users);
 	});
 
 	socket.on('disconnect', function() {
-		var user = users.pop();
 
-		io.emit('user-disconnect', user);
+		var thisUser;
+		users = users.filter(function(user, index) {
+			if (user.name === thisName) {
+				thisUser = user;
+				return false;
+			} else {
+				return true;
+			}
+		});
+
+		io.emit('user-disconnect', thisUser);
 	});
 
 	socket.on('send-message', function(msg) {

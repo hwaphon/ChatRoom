@@ -1,6 +1,7 @@
 $(function() {
 	var localusers = [];
 
+	$('#name').focus();
 	$('#adduserform').submit(function() {
 		var name = $('#name').val();
 		$('name').val('');
@@ -25,6 +26,8 @@ $(function() {
 		socket.on('send-message-todom', function(msg) {
 			sendMessage(msg);
 		});
+
+		$('#message').focus();
 
 		$('#sendmessage').on('click', function(event) {
 			event.preventDefault();
