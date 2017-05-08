@@ -100,6 +100,10 @@ body {
 	color: #333;
 }
 
+.user.self {
+	background-color: rgba(0,0,0,.1);
+}
+
 .user:hover {
 	background-color: rgba(0,0,0,.1);
 	transition: all .5s;

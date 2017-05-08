@@ -10,7 +10,7 @@ $(function() {
 	 	socket.on('adduser-todom', function(users) {
 	 		users.forEach(function( value, index ) {
 	 			if (!~localusers.indexOf(value.name)) {
-	 				addUser(value.name, value.flag);
+	 				addUser(value.name, value.flag, name);
 	 			}
 	 		});
 	 	});
@@ -43,9 +43,11 @@ $(function() {
 	});
 
 
-	function addUser(name, flag) {
+	function addUser(name, flag, selfname) {
 		localusers.push(name);
-		$('.user-list').append($('<div></div>').addClass('user ' + flag)
+
+		var result = name === selfname? "user " + flag + " self" : "user " + flag;
+		$('.user-list').append($('<div></div>').addClass(result)
 												.html('<img src="imgs/default.jpg" alt="user img">' + 
 													'<p class="username">' + name + '</p>'));
 	}
