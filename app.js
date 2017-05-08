@@ -3,6 +3,7 @@ var app = express();
 var http = require('http').Server(app);
 var io = require('socket.io')(http);
 var path = require('path');
+var uuid = require('uuid');
 
 var users = [];
 
@@ -20,7 +21,7 @@ io.on('connection', function(socket) {
 		thisName = name;
 		users.push({
 			name: name,
-			flag: 'item' + users.length
+			flag: uuid.v1()
 		});
 		io.emit('adduser-todom', users);
 	});

@@ -138,6 +138,11 @@ body {
 	margin: 8px 36px;
 }
 
+.info.myself {
+	align-self: flex-end;
+	text-align: right;
+}
+
 .info .author {
 	font-size: 12px;
 	margin-bottom: 8px;
@@ -154,14 +159,26 @@ body {
 	word-break: break-all;
 }
 
+.myself .message {
+	background-color: #A8E6CF;
+}
+
 .message::before {
 	content: "";
 	position: absolute;
 	border: 8px solid;
-	border-color: transparent #C0D9E5 transparent transparent;
-	right: 100%;
 	top: 50%;
 	transform: translateY(-50%);
+}
+
+.info .message::before {
+	right: 100%;
+	border-color: transparent #C0D9E5 transparent transparent;
+}
+
+.info.myself .message::before {
+	left: 100%;
+	border-color: transparent transparent transparent #A8E6CF;
 }
 
 .input-area {
@@ -190,4 +207,8 @@ body {
 
 #sendmessage:hover {
 	background-color: #3DC4D0;
+}
+
+::selection {
+	background-color: #F2EEE3;
 }

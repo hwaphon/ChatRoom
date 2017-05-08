@@ -24,7 +24,7 @@ $(function() {
 		$('.model').addClass('hidden');
 
 		socket.on('send-message-todom', function(msg) {
-			sendMessage(msg);
+			sendMessage(msg, name);
 		});
 
 		$('#message').focus();
@@ -56,9 +56,14 @@ $(function() {
 		$('.' + flag).remove();
 	}
 
-	function sendMessage(msg) {
+	function sendMessage(msg, selfname) {
 		var element = document.createElement('div');
 		element.classList.add('info');
+
+		if (selfname === msg.name) {
+			element.classList.add('myself');
+		}
+
 		element.innerHTML = '<p class="author">' + msg.name +
 				'</p><div class="message">' + msg.message + '</div>';
 		$('.content-area').append(element);
