@@ -33,10 +33,12 @@ $(function() {
 			event.preventDefault();
 
 			var message = $('#message').val();
+
+			if (message.trim() !== '') {
+				socket.emit('send-message', {name: name, message: message});
+			}
 			$('#message').val('');
 			$('#message').focus();
-
-			socket.emit('send-message', {name: name, message: message});
 		});
 
 		return false;
