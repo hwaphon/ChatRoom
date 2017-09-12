@@ -19,7 +19,7 @@ $(function() {
 	 		removeUser(user.name, user.flag);
 	 	});
 
-		socket.emit('adduser', name);
+		socket.emit('adduser', filterStr(name));
 
 		$('.model').addClass('hidden');
 
@@ -68,9 +68,20 @@ $(function() {
 			element.classList.add('myself');
 		}
 
-		element.innerHTML = '<p class="author">' + msg.name +
-				'</p><div class="message">' + msg.message + '</div>';
+		element.innerHTML = '<p class="author">' + filterStr(msg.name) +
+				'</p><div class="message">' + filterStr(msg.message) + '</div>';
 		$('.content-area').append(element);
 		element.scrollIntoView(false);
 	}
+
+	//filter xss attack
+	 function filterStr(str) {
+        var pattern = new RegExp("[`~!@#$^&*()=|{}':;',\\[\\].<>/?~！@#￥……&*（）——|{}【】‘；：”“'。，、？%+_]");    
+        var specialStr = "";    
+        for(var i=0;i<str.length;i++)    
+        {    
+             specialStr += str.substr(i, 1).replace(pattern, '');     
+        }    
+        return specialStr;    
+    }    
 });
